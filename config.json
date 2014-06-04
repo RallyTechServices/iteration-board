@@ -1,0 +1,13 @@
+{
+   "name": "test",
+   "className": "CustomApp",
+   "server": "https://audemo.rallydev.com",
+   "sdk": "2.0p5",
+   "javascript": [
+      "overrides.js",
+      "App.js"
+   ],
+   "css": [
+      "app.css"
+   ]
+}
