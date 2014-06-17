@@ -1,8 +1,8 @@
 {
    "name": "test",
    "className": "CustomApp",
-   "server": "https://audemo.rallydev.com",
-   "sdk": "2.0p5",
+   "server": "https://10.32.16.78",
+   "sdk": "2.0rc2",
    "javascript": [
       "overrides.js",
       "App.js"

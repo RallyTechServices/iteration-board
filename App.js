@@ -2,11 +2,9 @@
 Ext.define('CustomApp', {
     extend: 'Rally.app.App',
     componentCls: 'app',
-    
     items:[ 
         {xtype:'container', itemId:'selector_box', layout: { type:'hbox'} },
-        {xtype:'container',itemId:'feature_box',tpl:"<tpl>Feature chosen: {FormattedID}:{Name}</tpl>" },
-        {xtype:'container',itemId:'display_box'}
+        {xtype:'container',itemId:'display_box', margin: 10}
     ],
     
     launch: function() {
@@ -14,7 +12,7 @@ Ext.define('CustomApp', {
         this.down('#selector_box').add({
             xtype:'rallybutton',
             text:'Choose Feature',
-            margin: 5,
+            margin: 10,
             listeners: {
                 scope: this,
                 click: function(){
@@ -24,12 +22,12 @@ Ext.define('CustomApp', {
         });
        
         // add an empty separator
-        this.down('#selector_box').add({xtype:'container',width: 100});
+        this.down('#selector_box').add({xtype:'container',width: 45});
         
         this.down('#selector_box').add({
             xtype: 'rallyiterationcombobox',
             fieldLabel: 'First Column',
-            margin: 5,
+            margin: 10,
             labelWidth: 75,
             width: 250,
             listeners: {
@@ -45,9 +43,19 @@ Ext.define('CustomApp', {
             }
         });
         
+        // add an empty separator
+        this.down('#selector_box').add({xtype:'container',width: 45});
+        
+        this.down('#selector_box').add({
+            xtype:'container', 
+            itemId:'feature_box',
+            margin: 10, 
+            tpl:"<span class='titlebar-text'><tpl>{FormattedID}: {Name:ellipsis(45)}</tpl></span>" 
+        });
+        
     },
     _showFeatureChooser: function(){
-        console.log('here we are');
+        console.log('_showFeatureChooser');
         Ext.create('Rally.ui.dialog.ChooserDialog',{
             artifactTypes:['portfolioitem/feature'],
             autoShow: true,
@@ -89,7 +97,7 @@ Ext.define('CustomApp', {
                 }
             });
         } else {
-            this.board = this.down('#display_box').add({ xtype:'container',html:'Nope.'});
+            // this.board = this.down('#display_box').add({ xtype:'container',html:'Nope.'});
         }
     }
 });
